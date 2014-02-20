@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+  <string id="100">Network Configuration</string>
+	<string id="105">Camera IP Address</string>
+	<string id="110">Auto discover Camera</string>
+	<string id="115">Set IP manually</string>
+	
+  <string id="200">Advanced Options</string>
+	<string id="205">Debug Logging</string>
+</strings>

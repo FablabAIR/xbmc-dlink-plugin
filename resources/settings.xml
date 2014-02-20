@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="100">
+        <setting type="lsep" label="105" />
+        <setting id="discover_camera" type="action" label="110" action="script.surveillanceCameraXBMCAddon.Camera.foo()" />
+        <setting id="camera_ip" type="text" label="115" enable="!eq(-1,true)" default="X.X.X.X" />
+    </category>
+    <category label="200">
+        <setting id="debug_enabled" type="bool" label="205" default="false" />
+    </category>
+</settings>
