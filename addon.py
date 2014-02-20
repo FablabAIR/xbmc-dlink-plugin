@@ -1,24 +1,38 @@
-import xbmc
+import xbmc, xbmcaddon
 import logging
 import time
 import socket
 from settings import *
+from camDriver import *
+
+
+
+
 
 class Camera:
 	connected = False
 
 	def __init__(self, settings):
+		self.addon = xbmcaddon.Addon(id='script.surveillanceCameraXBMCAddon')
+		self.settings = settings
+
 		
-		#self.settings = settings
+		if settings.camera_ip == 'X.X.X.X':
+			logger.debug("Starting camera discovery in the network")
+			notify("Searching camera in the network", "Starting")
+			
+			self.camera_ip = self.start_autodiscover()
+			if (self.camera_ip != None):
+				notify("Camera discovery", "Found Camera at: %s" % self.camera_ip)
+				self.addon.setSetting(id='camera_ip',value=self.camera_ip)
+			else:
+				notify("Camera discovery", "Failed. Could not find Camera.")
+				
+			
+		else: 
+			self.camera_ip = settings.camera_ip
 
-		logger.debug("Starting camera discovery in the network")
-		notify("Searching camera in the network", "Starting")
-		camera_ip = self.start_autodiscover()
-
-		if (camera_ip != None):
-			notify("Bridge discovery", "Found bridge at: %s" % hue_ip)
-		else:
-			notify("Bridge discovery", "Failed. Could not find bridge.")
+		
 
 		
 	def start_autodiscover(self):
@@ -52,11 +66,8 @@ def notify(title, content):
 	xbmc.executebuiltin('Notification(%s, %s)' %(title, content))
   
   
-def run():
-	playlist = xbmc.PlayList( xbmc.PLAYLIST_VIDEO )
-	playlist.clear()
-	playlist.add('rtsp://192.168.0.20:554/play1.sdp')
-	xbmc.Player().play(playlist)
+def runvideo(camera):
+	xbmc.Player().play('rtsp://'+str(camera.camera_ip)+'/play1.sdp')
 
 if ( __name__ == "__main__" ):
 	settings = settings()
@@ -74,7 +85,20 @@ if ( __name__ == "__main__" ):
 	logger.addHandler(steam_handler)
 	
 	camera = Camera(settings)
-	#while not camera.connected:
-	#	logger.debuglog("Camera is not connected")
-	#	time.sleep(1)
-	#run()
+	
+	if len(sys.argv) == 1 :
+		runvideo(camera)
+	else :
+		#len(sys.argv>1)
+		cam = cameraInterraction(camera.camera_ip)
+		if sys.argv[1] == 'up':
+			cam.up()
+		elif sys.argv[1] == 'down':
+			cam.down()
+		elif sys.argv[1] == 'left':
+			cam.left()
+		elif sys.argv[1] == 'right':
+			cam.right()
+		elif sys.argv[1] == 'home':
+			cam.home()
+	
