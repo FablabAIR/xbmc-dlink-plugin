@@ -22,34 +22,38 @@ class Camera:
 
 		
 	def start_autodiscover(self):
-	#we will use the principle of uPnP
-	  port = 1900
-	  ip = "239.255.255.250"
+	
+		#we will use the principle of uPnP
+		port = 1900
+		ip = "239.255.255.250"
 
-	  address = (ip, port)
-	  data = """M-SEARCH * HTTP/1.1
-	  HOST: %s:%s
-	  MAN: ssdp:discover
-	  MX: 5
-	  ST: upnp:rootdevice""" % (ip, port)
-	  #ST : ssdp:all"""
-	  client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
-	  camera_ip = None
-	  num_retransmits = 0
-	  num_max_retransmits = 10
+		address = (ip, port)
+		data = """M-SEARCH * HTTP/1.1
+		HOST: %s:%s
+		MAN: ssdp:discover
+		MX: 3
+		ST: upnp:rootdevice""" % (ip, port)
 	  
-	  #we will attempt num_max_retransmissions of the paquet
-	  while(num_retransmits < num_max_retransmits) and camera_ip == None:
-		  num_retransmits += 1
-		  client_socket.sendto(data, address)
-		  recv_data, addr = client_socket.recvfrom(2048)
-		  notify("Camera discovery", recv_data )
-		  
-	  return camera_ip
+		client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+		camera_ip = None
+		num_retransmits = 0
+		num_max_retransmits = 10
+	  
+		#we will attempt num_max_retransmissions of the paquet
+		while(num_retransmits < num_max_retransmits) and camera_ip == None:
+			num_retransmits += 1
+			client_socket.sendto(data, address)
+			recv_data, addr = client_socket.recvfrom(2048)
+			notify("Camera discovery", recv_data )
+			if "IpBridge" in recv_data and "description.xml" in recv_data:
+				hue_ip = recv_data.split("LOCATION: http://")[1].split(":")[0]
+			time.sleep(1)
+	  
+		return camera_ip
 	  
 def notify(title, content):
-	xbmc.executebuiltin('Notification(%s, %s)' %(title, content))
+	xbmc.executebuiltin('Notification(%s, %s), 1000' %(title, content))
   
   
 def run():
