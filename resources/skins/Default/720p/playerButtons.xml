@@ -1,0 +1,122 @@
+<window>
+	<defaultcontrol>-</defaultcontrol>
+	<allowoverlay>yes</allowoverlay>
+	<controls>
+		<control type="group">
+			<animation effect="fade" time="200">VisibleChange</animation>
+			<visible>true</visible>
+			<control type="button" id="3">
+				  <description>My first button control</description>
+				  <posx>80</posx>
+				  <posy>100</posy>
+				  <width>100</width>
+				  <height>100</height>
+				  <visible>true</visible>
+				  <colordiffuse>FFFFFFFF</colordiffuse>
+				  <texturefocus>arrow_left_alt.png</texturefocus>
+				  <texturenofocus>arrow_left_alt.png</texturenofocus>
+				  <label>gauche</label>
+				  <font>font12</font>
+				  <textcolor>FFFFFFFF</textcolor>
+				  <focusedcolor>FFFF0000</focusedcolor>
+				  <disabledcolor>80FFFFFF</disabledcolor>
+				  <align>center</align>
+				  <aligny>center</aligny>
+				  <textoffsetx></textoffsetx>
+				  <textoffsety></textoffsety>
+				  <pulseonselect></pulseonselect>
+				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,left)</onclick>
+				  <onfocus>-</onfocus>
+				  <onunfocus>-</onunfocus>
+				  <onup>2</onup>
+				  <ondown>3</ondown>
+				  <onleft>1</onleft>
+				  <onright>1</onright>
+			</control>
+			<control type="button" id="4">
+				  <description>My first button control</description>
+				  <posx>180</posx>
+				  <posy>100</posy>
+				  <width>100</width>
+				  <height>100</height>
+				  <visible>true</visible>
+				  <colordiffuse>FFFFFFFF</colordiffuse>
+				  <texturefocus>icon.png</texturefocus>
+				  <texturenofocus>icon.png</texturenofocus>
+				  <label>droite</label>
+				  <font>font12</font>
+				  <textcolor>FFFFFFFF</textcolor>
+				  <focusedcolor>FFFF0000</focusedcolor>
+				  <disabledcolor>80FFFFFF</disabledcolor>
+				  <align>center</align>
+				  <aligny>center</aligny>
+				  <textoffsetx></textoffsetx>
+				  <textoffsety></textoffsety>
+				  <pulseonselect></pulseonselect>
+				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,right)</onclick>
+				  <onfocus>-</onfocus>
+				  <onunfocus>-</onunfocus>
+				  <onup>2</onup>
+				  <ondown>3</ondown>
+				  <onleft>1</onleft>
+				  <onright>1</onright>
+			</control>
+			<control type="button" id="5">
+				  <description>My first button control</description>
+				  <posx>130</posx>
+				  <posy>200</posy>
+				  <width>100</width>
+				  <height>100</height>
+				  <visible>true</visible>
+				  <colordiffuse>FFFFFFFF</colordiffuse>
+				  <texturefocus>icon.png</texturefocus>
+				  <texturenofocus>icon.png</texturenofocus>
+				  <label>bas</label>
+				  <font>font12</font>
+				  <textcolor>FFFFFFFF</textcolor>
+				  <focusedcolor>FFFF0000</focusedcolor>
+				  <disabledcolor>80FFFFFF</disabledcolor>
+				  <align>center</align>
+				  <aligny>center</aligny>
+				  <textoffsetx></textoffsetx>
+				  <textoffsety></textoffsety>
+				  <pulseonselect></pulseonselect>
+				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,down)</onclick>
+				  <onfocus>-</onfocus>
+				  <onunfocus>-</onunfocus>
+				  <onup>2</onup>
+				  <ondown>3</ondown>
+				  <onleft>1</onleft>
+				  <onright>1</onright>
+			</control>
+			<control type="button" id="6">
+				  <description>My first button control</description>
+				  <posx>130</posx>
+				  <posy>0</posy>
+				  <width>100</width>
+				  <height>100</height>
+				  <visible>true</visible>
+				  <colordiffuse>FFFFFFFF</colordiffuse>
+				  <texturefocus>icon.png</texturefocus>
+				  <texturenofocus>icon.png</texturenofocus>
+				  <label>haut</label>
+				  <font>font12</font>
+				  <textcolor>FFFFFFFF</textcolor>
+				  <focusedcolor>FFFF0000</focusedcolor>
+				  <disabledcolor>80FFFFFF</disabledcolor>
+				  <align>center</align>
+				  <aligny>center</aligny>
+				  <textoffsetx></textoffsetx>
+				  <textoffsety></textoffsety>
+				  <pulseonselect></pulseonselect>
+				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,up)</onclick>
+				  <onfocus>-</onfocus>
+				  <onunfocus>-</onunfocus>
+				  <onup>2</onup>
+				  <ondown>3</ondown>
+				  <onleft>1</onleft>
+				  <onright>1</onright>
+			</control>
+		</control>
+	</controls>
+</window>
