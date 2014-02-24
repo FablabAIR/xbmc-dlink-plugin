@@ -13,8 +13,8 @@
 				  <height>100</height>
 				  <visible>true</visible>
 				  <colordiffuse>FFFFFFFF</colordiffuse>
-				  <texturefocus>icons/arrow_left_alt.png</texturefocus>
-				  <texturenofocus>icons/arrow_left_alt.png</texturenofocus>
+				  <texturefocus>arrow_left_alt.png</texturefocus>
+				  <texturenofocus>arrow_left_alt.png</texturenofocus>
 				  <label>gauche</label>
 				  <font>font12</font>
 				  <textcolor>FFFFFFFF</textcolor>
