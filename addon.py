@@ -41,14 +41,14 @@ class Camera:
 		port = 1900
 		ip = "239.255.255.250"
 
-		address = (ip, port)
-		data = """M-SEARCH * HTTP/1.1
-		HOST: %s:%s
-		MAN: ssdp:discover
-		MX: 3
-		ST: upnp:rootdevice""" % (ip, port)
-	  
-		client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	  address = (ip, port)
+	  data = """M-SEARCH * HTTP/1.1
+	  HOST: %s:%s
+	  MAN: ssdp:discover
+	  MX: 5
+	  ST: upnp:rootservice""" % (ip, port)
+	  #ST : ssdp:all"""
+	  client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 		camera_ip = None
 		num_retransmits = 0
@@ -63,7 +63,29 @@ class Camera:
 			if "IpBridge" in recv_data and "description.xml" in recv_data:
 				hue_ip = recv_data.split("LOCATION: http://")[1].split(":")[0]
 			time.sleep(1)
-	  
+
+
+	
+class buttonWindow(xbmcgui.WindowXMLDialog):
+		def __init__(self, strXMLname, strFallBacklPath, strDefaultName, forceFallback):
+			pass
+	
+
+class streamPlayer(xbmc.Player):
+	def __init__(self):
+		xbmc.Player.__init__(xbmc.PLAYER_CORE_MPLAYER)
+		self.win = None
+		
+	def setWindow(self, window):
+		self.win = window	
+	
+	def onPlaybackStopped(self):
+		if not self.win == 'None' :
+			self.win.close()
+			del self.win
+
+		
+	
 		return camera_ip
 	  
 def notify(title, content):
@@ -71,7 +93,20 @@ def notify(title, content):
   
   
 def runvideo(camera):
-	xbmc.Player().play('rtsp://'+str(camera.camera_ip)+'/play1.sdp')
+	win = buttonWindow("playerButtons.xml",camera.addon.getAddonInfo('path'),"Default","720p")
+	player = streamPlayer()
+	player.setWindow(win)
+
+	player.play('rtsp://'+str(camera.camera_ip)+'/play1.sdp')
+	
+	win.doModal()
+	del win
+
+	#xbmc.Player().play('rtsp://'+str(camera.camera_ip)+'/play1.sdp')
+	#xbmc.Player().play('http://192.168.0.21/video.cgi')
+	
+
+	
 
 if ( __name__ == "__main__" ):
 	settings = settings()
@@ -105,4 +140,26 @@ if ( __name__ == "__main__" ):
 			cam.right()
 		elif sys.argv[1] == 'home':
 			cam.home()
+		elif sys.argv[1] == 'upleft':
+			cam.upleft()
+		elif sys.argv[1] == 'downleft':
+			cam.downleft()
+		elif sys.argv[1] == 'downright':
+			cam.downright()
+		elif sys.argv[1] == 'upright':
+			cam.upright()
+<<<<<<< .mine
+
+
+
+
+
+
+=======
+		
+			
+			
+			
+		
 	
+>>>>>>> .theirs
