@@ -1,0 +1,1 @@
+move Keyboard.xml in the xbmc/userdata/keymaps/ folder
