@@ -6,6 +6,7 @@
 		<left mod="alt">RunScript(script.surveillanceCameraXBMCAddon,left)</left>
 		<right mod="alt">RunScript(script.surveillanceCameraXBMCAddon,right)</right>
 		<space mod="alt">RunScript(script.surveillanceCameraXBMCAddon,home)</space>
+		<enter mod="alt">RunScript(script.surveillanceCameraXBMCAddon,patrol)</space>
     </keyboard>
   </global>
  </keymap>

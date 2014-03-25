@@ -1,152 +1,114 @@
 import httplib
 import xbmc, xbmcgui
 import sys
-
-#to remove
 import time
-######
+import logging
 
-###########BOUNDARIES for dcs-5222L 
-# <boundaryMaxX>174</boundaryMaxX>
-# <boundaryMinX>-171</boundaryMinX>
-# <boundaryMaxY>93</boundaryMaxY>
-# <boundaryMinY>-29</boundaryMinY>
-############
+class cameraInteraction:
 
+	logger = logging.getLogger()
+	steam_handler = logging.StreamHandler()
 
-class cameraInterraction():
-	def __init__(self, ip_camera):
+	#init the camera interaction, with the pan
+	def __init__(self, ip_camera, debug):
+		
+		#addon activity is logged only if the user check the option in the settings
+		if  debug == True:
+			self.logger.setLevel(logging.DEBUG)
+			self.steam_handler.setLevel(logging.DEBUG)
+			self.logger.addHandler(self.steam_handler)
+		else:	
+			self.logger.setLevel(logging.WARNING)
+			self.steam_handler.setLevel(logging.WARNING)
+			self.logger.addHandler(steam_handler)
+			
 		self.ip = ip_camera
 		self.panX = 15
 		self.panY = 15
 		self.cmdAddress = '/cgi/ptdc.cgi'
-
-
-
-
-	def buildCmdRequest(self, deltaX,deltaY):
-		return self.cmdAddress + '?command=set_relative_pos' + '&posX=' + str(deltaX) + '&posY=' + str(deltaY)
-		
+	
+	#set the new relative position
+	def buildSetRelativePosCmdRequest(self, deltaX,deltaY):
+		cmd = self.cmdAddress + '?command=set_relative_pos' + '&posX=' + str(deltaX) + '&posY=' + str(deltaY)
+		self.logger.debug("Requesting the camera to set a relative position. X = %s , Y = %s" %(str(deltaX), str(deltaY)))
+		return cmd
+	
+	#get back to the initial position
 	def buildHomeCmdRequest(self):
-		return self.cmdAddress + '?command=go_home'
+		cmd = self.cmdAddress + '?command=go_home'
+		self.logger.debug("Requesting the camera to go to the initial position.")
+		return cmd
 		
-	def buildZoomCmdRequest(self, z):
-		return self.cmdAddress + '?command=set_zoom&zoom_mag=' + str(z)
+	#set the new absolute position 
+	def buildSetAbsolutePosCmdRequest(self, deltaX,deltaY):
+		cmd = self.cmdAddress + '?command=set_pos' + '&posX=' + str(deltaX) + '&posY=' + str(deltaY)
+		self.logger.debug("Requesting the camera to set a relative position. X = %s , Y = %s" %(str(deltaX), str(deltaY)))
+		return cmd
+	
+	#ask the camera to control the room
+	def buildPatrolCmdRequest(self):
+		cmd = self.cmdAddress + '?command=pan_patrol'
+		self.logger.debug("Requesting the camera to go to check the room.")
+		return cmd
+	
 
 	def request(self, mode='GET', address=None, data=None):
-		""" Utility function for HTTP GET/PUT requests for the API"""
-		print(address)
 		connection = httplib.HTTPConnection(self.ip)
 		if mode == 'GET' or mode == 'DELETE':
 			connection.request(mode, address)
+			self.logger.debug("Request sent to %s in mode %s." %(mode, address))
 		if mode == 'PUT' or mode == 'POST':
 			connection.request(mode, address, data)
-
-		#Qlogger.debug("{0} {1} {2}".format(mode, address, str(data)))
+			self.logger.debug("Request sent to %s in mode %s with data %s." %(mode, address,data))
 		
-		#time.sleep(3)
-		result = connection.getresponse()
-		response = result.read()
-		print(response)
-		connection.close()
-
+		try :
+			result = connection.getresponse()
+			response = result.read()
+			connection.close()
+		except :
+			logger.warning("Network problem. Please verify you are connected in the same network of your camera.")
+			exit(1)
 
 
 	def up(self):
+		self.logger.debug("Request the camera to go UP")
 		self.request('GET',self.buildCmdRequest(0,self.panY))
 		
 	def down(self):
+		self.logger.debug("Request the camera to go DOWN")
 		self.request('GET',self.buildCmdRequest(0,-self.panY))
 		
 	def right(self):
+		self.logger.debug("Request the camera to go the RIGHT")
 		self.request('GET',self.buildCmdRequest(-self.panX,0))
 		
 	def left(self):
+		self.logger.debug("Request the camera to go to the LEFT")
 		self.request('GET',self.buildCmdRequest(self.panX,0))
 
 	def upright(self):
+		self.logger.debug("Request the camera to go UP RIGHT")
 		self.request('GET',self.buildCmdRequest(-self.panX,self.panY))
 
 	def upleft(self):
+		self.logger.debug("Request the camera to go UP LEFT")
 		self.request('GET',self.buildCmdRequest(self.panX,self.panY))
 		
 	def downright(self):
+		self.logger.debug("Request the camera to go DOWN RIGHT")
 		self.request('GET',self.buildCmdRequest(-self.panX,-self.panY))
 		
 	def downleft(self):
+		self.logger.debug("Request the camera to go DOWN LEFT")
 		self.request('GET',self.buildCmdRequest(self.panX,-self.panY))
 		
-	def panorama(self):
-		self.home()
-		time.sleep(2)
-		self.request('GET',self.buildCmdRequest(-171,0))
-		time.sleep(2)
-		self.home()
-		time.sleep(2)
-		self.request('GET',self.buildCmdRequest(174,0))
-		time.sleep(2)
-		self.home()
-
-	######ZOOM
-	def z1x(self): 
-		self.request('GET', self.buildZoomCmdRequest(1.0))
+	def checkRoom(self):
+		self.logger.debug("Request the camera to do a patrol")
+		self.request('GET',self.buildPatrolCmdRequest)
 		
-	def z2x(self): 
-		self.request('GET', self.buildZoomCmdRequest(2.0))
-		
-	def z4x(self): 
-		self.request('GET', self.buildZoomCmdRequest(4.0))
-		
-	#####Home position + Zoom x1
 	def home(self):
+		self.logger.debug("Request the camera to go to the initial position")
 		self.request('GET',self.buildHomeCmdRequest())
-		#z1x()
-		
-		
-
-######TEST#####
-def testallMovments():
-	cam = cameraInterraction()
-	cam.up()
-	time.sleep(1)
-	cam.down()
-	time.sleep(1)
-	cam.right()
-	time.sleep(1)
-	cam.left()
-	time.sleep(1)
-	cam.upright()
-	time.sleep(1)
-	cam.upleft()
-	time.sleep(1)
-	cam.downright()
-	time.sleep(1)
-	cam.downleft()
-	time.sleep(1)
-	
-	cam.home()
-
-# if(__name__ == '__main__'):
-	# if len(sys.argv) == 1 :
-		# xbmc.Player( xbmc.PLAYER_CORE_MPLAYER ).play('rtsp://192.168.0.20:554/play1.sdp')
-	# else :
-		##len(sys.argv>1)
-		# cam = cameraInterraction()
-		# if sys.argv[1] == 'up':
-			# cam.up()
-		# elif sys.argv[1] == 'down':
-			# cam.down()
-		# elif sys.argv[1] == 'left':
-			# cam.left()
-		# elif sys.argv[1] == 'right':
-			# cam.right()
-		# elif sys.argv[1] == 'home':
-			# cam.home()
-			
-
-		
-		
-	
 	
 	
 

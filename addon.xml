@@ -12,7 +12,7 @@
 	
 	<extension point="xbmc.addon.metadata">
 		<summary lang="fr">D-link Camera</summary>
-		<description lang="fr">Plugin which permit to use some D-link Cameras</description>
+		<description lang="fr">Plugin which permit to use D-Link DCS-5222L and DCS-932L Cameras</description>
 		<disclamer lang="fr">Concu et testé sur les caméras D-Link DCS-5222L et DCS-932L. Pour ajouter d'autres caméras IP, merci de se reporter à la documentation disponible sur le site web de l'addon. Pour commander la caméra au clavier, merci de se référer au site web de l'addon. Fanart réalisé par 기훈0061 sous licence [CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons</disclamer>
 		<platform>all</platform>
 		<language>fr</language>
