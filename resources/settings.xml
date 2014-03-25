@@ -2,7 +2,7 @@
 <settings>
 
   <category label="100">
-    <setting id="id_camera" type="enum" enable="true" label="101" default="0" 
+    <setting id="camera_id" type="enum" enable="true" label="101" default="0" 
              lvalues="102|103" />
 
     
