@@ -1,7 +1,7 @@
 import sys
 import xbmcaddon
 
-__addon__ = xbmcaddon.Addon(id='script.surveillanceCameraXBMCAddon')
+__addon__ = xbmcaddon.Addon(id='script.DLinkCameraXBMCAddon')
 
 class settings():
 	def __init__( self, *args, **kwargs ):

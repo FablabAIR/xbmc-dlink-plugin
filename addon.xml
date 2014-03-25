@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.surveillanceCameraXBMCAddon" name="DCS-522L Surveillance Camera" version="0.0.1" provider-name="Nicolas Afonso, Pierre Lartigue, Elisa Martinez">
+<addon id="script.DLinkCameraXBMCAddon" name="D-Link Camera addon for XBMC" version="0.0.2" provider-name="Nicolas Afonso, Pierre Lartigue, Elisa Martinez">
 	<requires>
 	<import addon="xbmc.python" version="2.1.0" optional="false"/>
 	<import addon="xbmc.addon" version="12.0.0" />
@@ -12,12 +12,12 @@
 	
 	<extension point="xbmc.addon.metadata">
 		<summary lang="fr">D-link Camera</summary>
-		<description lang="fr">Plugin which permit to use the D-link Camera</description>
-		<disclamer lang="fr">Concu et testé sur la caméra D-Link Dcs-522L. Fonctionne peut être sur d'autres caméras IP. Fanart réalisé par 기훈0061 sous licence [CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons</disclamer>
+		<description lang="fr">Plugin which permit to use some D-link Cameras</description>
+		<disclamer lang="fr">Concu et testé sur les caméras D-Link DCS-5222L et DCS-932L. Pour ajouter d'autres caméras IP, merci de se reporter à la documentation disponible sur le site web de l'addon. Pour commander la caméra au clavier, merci de se référer au site web de l'addon. Fanart réalisé par 기훈0061 sous licence [CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons</disclamer>
 		<platform>all</platform>
 		<language>fr</language>
 		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
-		<website>http://air.imag.fr/index.php/Extensions_XBMC</website>
+		<website>http://air.imag.fr/index.php/Extensions_XBMC/FicheSuivi#Plugin_Cam.C3.A9ra_de_surveillance</website>
 		<email>xbmc_ricm5@googlegroups.com</email>
 		<forum></forum>
 		<source>https://bitbucket.org/xbmcproject/surveillancecameraxbmcaddon</source>

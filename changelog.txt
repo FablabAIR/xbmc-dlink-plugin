@@ -1,2 +1,6 @@
+v0.0.2
+- Adding the DCS-932L Camera
+
 v0.0.1
-- First version of the program
+
+- First version of the program (DCS-5222L Camera)

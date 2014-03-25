@@ -2,7 +2,7 @@
 <settings>
     <category label="100">
         <setting type="lsep" label="105" />
-        <setting id="discover_camera" type="action" label="110" action="script.surveillanceCameraXBMCAddon.Camera.start_autodiscover()" />
+        <setting id="discover_camera" type="action" label="110" action="RunScript(script.DLinkCameraXBMCAddon, discover)" />
         <setting id="camera_ip" type="text" label="115" enable="!eq(-1,true)" default="X.X.X.X" />
     </category>
     <category label="200">
