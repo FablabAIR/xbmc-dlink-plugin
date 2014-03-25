@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
-  <string id="100">Network Configuration</string>
-	<string id="105">Camera IP Address</string>
-	<string id="110">Auto discover Camera</string>
-	<string id="115">Set IP manually</string>
-	
-  <string id="200">Advanced Options</string>
-	<string id="205">Debug Logging</string>
+  <string id="100">Camera Configuration</string>
+
+  <string id="101">Camera Choise</string>
+  <string id="102">D-Link DCS-5222</string>
+  <string id="103">D-Link DCS-932L</string>
+
+  <string id="150">Network Configuration</string>
+  <string id="151">Auto discover Camera</string>
+  <string id="152">Set IP manually</string>
+  
+
+
+  <string id="300">Advanced Options</string>
+  <string id="301">Debug Logging</string>
 </strings>

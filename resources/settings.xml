@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-    <category label="100">
-        <setting type="lsep" label="105" />
-        <setting id="discover_camera" type="action" label="110" action="RunScript(script.DLinkCameraXBMCAddon, discover)" />
-        <setting id="camera_ip" type="text" label="115" enable="!eq(-1,true)" default="X.X.X.X" />
-    </category>
-    <category label="200">
-        <setting id="debug_enabled" type="bool" label="205" default="false" />
-    </category>
+
+  <category label="100">
+    <setting id="id_camera" type="enum" enable="true" label="101" default="0" 
+             lvalues="102|103" />
+
+    
+    <setting type="lsep" label="150" />
+    <setting id="discover_camera" type="action" label="151" action="RunScript(script.DLinkCameraXBMCAddon, discover)" />
+    <setting id="camera_ip" type="text" label="152" enable="!eq(-1,true)" default="X.X.X.X" />
+  </category>
+
+
+  <category label="300">
+    <setting id="debug_enabled" type="bool" label="301" default="false" />
+  </category>
 </settings>

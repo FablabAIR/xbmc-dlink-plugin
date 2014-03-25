@@ -8,8 +8,9 @@ class settings():
 		self.readxml()
 		
 	def readxml(self):
-		self.camera_ip = __addon__.getSetting("camera_ip")
-		self.debug_enabled = __addon__.getSetting("debug_enabled")
+                self.id_camera     = int(__addon__.getSetting("id_camera"))
+		self.camera_ip     = __addon__.getSetting("camera_ip")
+		self.debug_enabled = bool(__addon__.getSetting("debug_enabled"))
 		
 	def update(self, **kwargs):
 		self.__dict__.update(**kwargs)
