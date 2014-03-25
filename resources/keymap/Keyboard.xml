@@ -1,0 +1,11 @@
+<keymap>
+  <global>
+    <keyboard>
+		<up mod="alt">RunScript(script.surveillanceCameraXBMCAddon,up)</up>
+		<down mod="alt">RunScript(script.surveillanceCameraXBMCAddon,down)</down>
+		<left mod="alt">RunScript(script.surveillanceCameraXBMCAddon,left)</left>
+		<right mod="alt">RunScript(script.surveillanceCameraXBMCAddon,right)</right>
+		<space mod="alt">RunScript(script.surveillanceCameraXBMCAddon,home)</space>
+    </keyboard>
+  </global>
+ </keymap>
