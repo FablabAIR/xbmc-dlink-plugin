@@ -52,6 +52,7 @@ class Camera:
 				exit(1)
 		else: 
 			self.camera_ip = settings.camera_ip
+			self.camera_url = self.camera_url.replace('*', self.camera_ip)
 			notify("Camera network address", "Camera IP has been set : %s" %self.camera_ip)
 			logger.debug("Camera IP has been set : %s" %self.camera_ip)
 		
@@ -176,8 +177,8 @@ def runvideo(camera):
 	if camera.camera_name == CONST_CAM0_NAME :
 		#this camera con be controlled, so we display buttons in overlay in order to do it
 		win = buttonWindow("playerButtons.xml",camera.addon.getAddonInfo('path'),"Default","720p")
-		player.setWindow(win)
 		player = streamPlayer()
+		player.setWindow(win)
 		player.play(camera.camera_url)
 		win.doModal()
 		del win
@@ -216,7 +217,7 @@ if ( __name__ == "__main__" ):
 	if len(sys.argv) == 1 :
 		runvideo(camera)
 	else :
-		cam = cameraInterraction(camera.camera_ip, debug)
+		cam = cameraInteraction(camera.camera_ip, debug)
 		if sys.argv[1] == 'up':
 			cam.up()
 		elif sys.argv[1] == 'down':
@@ -236,4 +237,4 @@ if ( __name__ == "__main__" ):
 		elif sys.argv[1] == 'upright':
 			cam.upright()
 		elif sys.argv[1] == 'patrol':
-			cam.checkroom()
+			cam.checkRoom()

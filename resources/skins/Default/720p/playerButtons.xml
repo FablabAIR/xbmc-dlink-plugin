@@ -24,7 +24,7 @@
 				  <textoffsetx></textoffsetx>
 				  <textoffsety></textoffsety>
 				  <pulseonselect></pulseonselect>
-				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,downleft)</onclick>
+				  <onclick>RunScript(script.DLinkCameraXBMCAddon,downleft)</onclick>
 				  <onfocus>-</onfocus>
 				  <onunfocus>-</onunfocus>
 				  <onup>2</onup>
@@ -52,7 +52,7 @@
 				  <textoffsetx></textoffsetx>
 				  <textoffsety></textoffsety>
 				  <pulseonselect></pulseonselect>
-				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,down)</onclick>
+				  <onclick>RunScript(script.DLinkCameraXBMCAddon,down)</onclick>
 				  <onfocus>-</onfocus>
 				  <onunfocus>-</onunfocus>
 				  <onup>2</onup>
@@ -80,7 +80,7 @@
 				  <textoffsetx></textoffsetx>
 				  <textoffsety></textoffsety>
 				  <pulseonselect></pulseonselect>
-				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,downright)</onclick>
+				  <onclick>RunScript(script.DLinkCameraXBMCAddon,downright)</onclick>
 				  <onfocus>-</onfocus>
 				  <onunfocus>-</onunfocus>
 				  <onup>2</onup>
@@ -108,7 +108,7 @@
 				  <textoffsetx></textoffsetx>
 				  <textoffsety></textoffsety>
 				  <pulseonselect></pulseonselect>
-				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,right)</onclick>
+				  <onclick>RunScript(script.DLinkCameraXBMCAddon,right)</onclick>
 				  <onfocus>-</onfocus>
 				  <onunfocus>-</onunfocus>
 				  <onup>2</onup>
@@ -136,7 +136,7 @@
 				  <textoffsetx></textoffsetx>
 				  <textoffsety></textoffsety>
 				  <pulseonselect></pulseonselect>
-				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,upright)</onclick>
+				  <onclick>RunScript(script.DLinkCameraXBMCAddon,upright)</onclick>
 				  <onfocus>-</onfocus>
 				  <onunfocus>-</onunfocus>
 				  <onup>2</onup>
@@ -164,7 +164,7 @@
 				  <textoffsetx></textoffsetx>
 				  <textoffsety></textoffsety>
 				  <pulseonselect></pulseonselect>
-				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,up)</onclick>
+				  <onclick>RunScript(script.DLinkCameraXBMCAddon,up)</onclick>
 				  <onfocus>-</onfocus>
 				  <onunfocus>-</onunfocus>
 				  <onup>2</onup>
@@ -192,7 +192,7 @@
 				  <textoffsetx></textoffsetx>
 				  <textoffsety></textoffsety>
 				  <pulseonselect></pulseonselect>
-				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,upleft)</onclick>
+				  <onclick>RunScript(script.DLinkCameraXBMCAddon,upleft)</onclick>
 				  <onfocus>-</onfocus>
 				  <onunfocus>-</onunfocus>
 				  <onup>2</onup>
@@ -208,8 +208,8 @@
 				  <height>50</height>
 				  <visible>true</visible>
 				  <colordiffuse>FFFFFFFF</colordiffuse>
-				  <texturefocus>icon_house_alt.png</texturefocus>
-				  <texturenofocus>icon_house.png</texturenofocus>
+				  <texturefocus>icon_house.png</texturefocus>
+				  <texturenofocus>icon_house_alt.png</texturenofocus>
 				  <label></label>
 				  <font>font12</font>
 				  <textcolor>FFFFFFFF</textcolor>
@@ -220,7 +220,7 @@
 				  <textoffsetx></textoffsetx>
 				  <textoffsety></textoffsety>
 				  <pulseonselect></pulseonselect>
-				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,home)</onclick>
+				  <onclick>RunScript(script.DLinkCameraXBMCAddon,home)</onclick>
 				  <onfocus>-</onfocus>
 				  <onunfocus>-</onunfocus>
 				  <onup>2</onup>
@@ -248,7 +248,7 @@
 				  <textoffsetx></textoffsetx>
 				  <textoffsety></textoffsety>
 				  <pulseonselect></pulseonselect>
-				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,left)</onclick>
+				  <onclick>RunScript(script.DLinkCameraXBMCAddon,left)</onclick>
 				  <onfocus>-</onfocus>
 				  <onunfocus>-</onunfocus>
 				  <onup>2</onup>
@@ -264,8 +264,8 @@
 				  <height>50</height>
 				  <visible>true</visible>
 				  <colordiffuse>FFFFFFFF</colordiffuse>
-				  <texturefocus>arrow_left.png</texturefocus>
-				  <texturenofocus>arrow_left_alt.png</texturenofocus>
+				  <texturefocus>patrol-focus.png</texturefocus>
+				  <texturenofocus>patrol.png</texturenofocus>
 				  <label></label>
 				  <font>font12</font>
 				  <textcolor>FFFFFFFF</textcolor>
@@ -276,7 +276,7 @@
 				  <textoffsetx></textoffsetx>
 				  <textoffsety></textoffsety>
 				  <pulseonselect></pulseonselect>
-				  <onclick>RunScript(script.surveillanceCameraXBMCAddon,patrol)</onclick>
+				  <onclick>RunScript(script.DLinkCameraXBMCAddon,patrol)</onclick>
 				  <onfocus>-</onfocus>
 				  <onunfocus>-</onunfocus>
 				  <onup>2</onup>

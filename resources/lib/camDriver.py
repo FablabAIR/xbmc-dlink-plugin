@@ -20,7 +20,7 @@ class cameraInteraction:
 		else:	
 			self.logger.setLevel(logging.WARNING)
 			self.steam_handler.setLevel(logging.WARNING)
-			self.logger.addHandler(steam_handler)
+			self.logger.addHandler(self.steam_handler)
 			
 		self.ip = ip_camera
 		self.panX = 15
@@ -72,39 +72,39 @@ class cameraInteraction:
 
 	def up(self):
 		self.logger.debug("Request the camera to go UP")
-		self.request('GET',self.buildCmdRequest(0,self.panY))
+		self.request('GET',self.buildSetRelativePosCmdRequest(0,self.panY))
 		
 	def down(self):
 		self.logger.debug("Request the camera to go DOWN")
-		self.request('GET',self.buildCmdRequest(0,-self.panY))
+		self.request('GET',self.buildSetRelativePosCmdRequest(0,-self.panY))
 		
 	def right(self):
 		self.logger.debug("Request the camera to go the RIGHT")
-		self.request('GET',self.buildCmdRequest(-self.panX,0))
+		self.request('GET',self.buildSetRelativePosCmdRequest(-self.panX,0))
 		
 	def left(self):
 		self.logger.debug("Request the camera to go to the LEFT")
-		self.request('GET',self.buildCmdRequest(self.panX,0))
+		self.request('GET',self.buildSetRelativePosCmdRequest(self.panX,0))
 
 	def upright(self):
 		self.logger.debug("Request the camera to go UP RIGHT")
-		self.request('GET',self.buildCmdRequest(-self.panX,self.panY))
+		self.request('GET',self.buildSetRelativePosCmdRequest(-self.panX,self.panY))
 
 	def upleft(self):
 		self.logger.debug("Request the camera to go UP LEFT")
-		self.request('GET',self.buildCmdRequest(self.panX,self.panY))
+		self.request('GET',self.buildSetRelativePosCmdRequest(self.panX,self.panY))
 		
 	def downright(self):
 		self.logger.debug("Request the camera to go DOWN RIGHT")
-		self.request('GET',self.buildCmdRequest(-self.panX,-self.panY))
+		self.request('GET',self.buildSetRelativePosCmdRequest(-self.panX,-self.panY))
 		
 	def downleft(self):
 		self.logger.debug("Request the camera to go DOWN LEFT")
-		self.request('GET',self.buildCmdRequest(self.panX,-self.panY))
+		self.request('GET',self.buildSetRelativePosCmdRequest(self.panX,-self.panY))
 		
 	def checkRoom(self):
 		self.logger.debug("Request the camera to do a patrol")
-		self.request('GET',self.buildPatrolCmdRequest)
+		self.request('GET',self.buildPatrolCmdRequest())
 		
 	def home(self):
 		self.logger.debug("Request the camera to go to the initial position")

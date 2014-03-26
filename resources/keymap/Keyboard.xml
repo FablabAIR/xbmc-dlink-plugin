@@ -1,12 +1,12 @@
 <keymap>
   <global>
     <keyboard>
-		<up mod="alt">RunScript(script.surveillanceCameraXBMCAddon,up)</up>
-		<down mod="alt">RunScript(script.surveillanceCameraXBMCAddon,down)</down>
-		<left mod="alt">RunScript(script.surveillanceCameraXBMCAddon,left)</left>
-		<right mod="alt">RunScript(script.surveillanceCameraXBMCAddon,right)</right>
-		<space mod="alt">RunScript(script.surveillanceCameraXBMCAddon,home)</space>
-		<enter mod="alt">RunScript(script.surveillanceCameraXBMCAddon,patrol)</space>
+		<up mod="alt">RunScript(script.DLinkCameraXBMCAddon,up)</up>
+		<down mod="alt">RunScript(script.DLinkCameraXBMCAddon,down)</down>
+		<left mod="alt">RunScript(script.DLinkCameraXBMCAddon,left)</left>
+		<right mod="alt">RunScript(script.DLinkCameraXBMCAddon,right)</right>
+		<space mod="alt">RunScript(script.DLinkCameraXBMCAddon,home)</space>
+		<backspace mod="alt">RunScript(script.DLinkCameraXBMCAddon,patrol)</backspace>
     </keyboard>
   </global>
  </keymap>
