@@ -91,15 +91,18 @@ class Camera:
 	  
 		logger.debug("Starting %s camera discover in the network." %num_max_retransmits)
 		#we will attempt num_max_retransmissions of the paquet
+		
+		client_socket.sendto(data, address)
+		
 		while(num_retransmits <= num_max_retransmits) and self.camera_ip == None:
 			
 			logger.debug("Attempt number %s" %num_retransmits)
 			
 			try :
-				client_socket.sendto(data, address)
+				#client_socket.sendto(data, address)
 				recv_data, addr = client_socket.recvfrom(2048)
 				
-				logger.debug("addr %s" %addr)
+				ip = str(addr).split("'")[1].split("'")[0]
 				
 			except :
 				logger.warning("Network problem. Please verify you are connected in the same network of your camera.")
@@ -107,30 +110,30 @@ class Camera:
 				
 			logger.debug("A response has been received. Its content : %s" %recv_data)
 			
-			if str(addr) in blacklist :
+			if ip in blacklist :
 				continue
 				
 			else :
 				if self.camera_xml in recv_data:
 					
 					#we now read the xml file in order to check if it is the requested Camera
-					ip = recv_data.split("LOCATION: http://")[1].split(":")[0]
+					#ip = recv_data.split("LOCATION: http://")[1].split(":")[0]
 					port = recv_data.split("LOCATION: http://")[1].split(":")[1].split("/")[0]
-					logger.debug("IP address/port of the answering device : %s:%s" %(addr, port))   
+					logger.debug("IP address/port of the answering device : %s:%s" %(ip, port))   
 					
 					self.camera_url = self.camera_url.replace('*', ip)
-					logger.debug("Attempting to connect to the camera stream : %s" %(self.camera_url))
+					logger.debug("Attempting to connect to the camera stream : %s" %(self.camera_xml))
 					
 					try :
 						connection = httplib.HTTPConnection(ip,port)
-						connection.request("GET", self.camera_url, None)
+						connection.request("GET", self.camera_xml, None)
 						result = connection.getresponse()
 						response = result.read()
 					except :
 						logger.warning("Network problem. Please verify you are connected in the same network of your camera.")
 						exit(1)
 						
-					loggin.debug("Response received : %s" %response)
+					logger.debug("Response received : %s" %response)
 					connection.close()
 					
 					parse = parseString(response)
@@ -164,13 +167,11 @@ class streamPlayer(xbmc.Player):
 		if not self.win == 'None' :
 			self.win.close()
 			del self.win
-
-		
 	
 		return camera_ip
 	  
 def notify(title, content):
-	xbmc.executebuiltin('Notification(%s, %s), 10000' %(title, content))
+	xbmc.executebuiltin('Notification(%s, %s, 10000, %s)' %(title, content, __icon__))
   
   
 def runvideo(camera):
@@ -187,12 +188,9 @@ def runvideo(camera):
 		player = streamPlayer()
 		player.play(camera.camera_url)
 		
-		#player.play('rtsp://'+str(camera.camera_ip)+'/play1.sdp')
-		#xbmc.Player().play('http://192.168.0.21/video.cgi')
-		#xbmc.Player().play('rtsp://'+str(camera.camera_ip)+'/play1.sdp')
-
-		
 if ( __name__ == "__main__" ):
+	__addon__       = xbmcaddon.Addon()
+	__icon__        = __addon__.getAddonInfo('icon')
 	settings = settings()
 	logger = logging.getLogger()
 	steam_handler = logging.StreamHandler()
